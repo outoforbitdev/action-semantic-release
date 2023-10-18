@@ -8,9 +8,48 @@ on:
       - dev
       - staging
 jobs:
+  semantic-release-dry:
+    runs-on: ubuntu-latest
+    name: Dry Semantic Release
+    permissions:
+      contents: read
+    outputs:
+      versionReleased: ${{steps.semanticrelease.outputs.version-released}}
+      version: ${{steps.semanticrelease.outputs.next-version}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Semantic Release
+        uses: ./
+        id: semanticrelease
+        with:
+          github-token: ${{ secrets.RELEASE_TOKEN }}
+  docker-publish:
+    if:   ${{ needs.semantic-release-dry.outputs.versionReleased }}
+    runs-on: ubuntu-latest
+    name: Docker Publish
+    needs: semantic-release-dry
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Docker Publish
+        uses: outoforbitdev/action-docker-publish@v1.0.5
+        id: dockerpublish
+        with:
+          docker-username: ${{ secrets.DOCKER_USERNAME }}
+          docker-token: ${{ secrets.DOCKER_TOKEN }}
+          image-name: ${{ vars.IMAGE_NAME }}
+          image-tag: ${{ needs.semantic-release-dry.outputs.version }}
+      - name: Output Tags
+        run: echo "Tag is ${{steps.dockerpublish.output.sha-tag}}"
   semantic-release:
     runs-on: ubuntu-latest
     name: Semantic Release
+    needs: docker-publish
     permissions:
       contents: write
     outputs:
@@ -32,23 +71,3 @@ jobs:
           NEXT_VERSION: ${{ steps.semanticrelease.outputs.next-version }}
           VERSION_RELEASED: ${{ steps.semanticrelease.outputs.versionReleased}}
         run: echo "### Version Summaries" >> $$GITHUB_STEP_SUMMARY; echo "* Last version - $LAST_VERSION" >> $$GITHUB_STEP_SUMMARY; echo "* Next version - $NEXT_VERSION" >> $$GITHUB_STEP_SUMMARY
-  docker-publish:
-    if:   ${{ needs.semantic-release.outputs.versionReleased }}
-    runs-on: ubuntu-latest
-    name: Docker Publish
-    needs: semantic-release
-    permissions:
-      contents: read
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Docker Publish
-        uses: outoforbitdev/action-docker-publish@v1.0.5
-        id: dockerpublish
-        with:
-          docker-username: ${{ secrets.DOCKER_USERNAME }}
-          docker-token: ${{ secrets.DOCKER_TOKEN }}
-          image-name: ${{ vars.IMAGE_NAME }}
-          image-tag: ${{ needs.semantic-release.outputs.version }}
-      - name: Output Tags
-        run: echo "Tag is ${{steps.dockerpublish.output.sha-tag}}"
