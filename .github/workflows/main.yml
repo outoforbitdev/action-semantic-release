@@ -26,6 +26,7 @@ jobs:
         id: semanticrelease
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
+          dry-run: true
   docker-publish:
     if:   ${{ needs.semantic-release-dry.outputs.versionReleased }}
     runs-on: ubuntu-latest
