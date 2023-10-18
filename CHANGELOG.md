@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/outoforbitdev/action-semantic-release/compare/v1.3.2...v1.3.3) (2023-10-18)
+
+
+### Bug Fixes
+
+* **docker:** use created docker image ([#47](https://github.com/outoforbitdev/action-semantic-release/issues/47)) ([3fa0d9f](https://github.com/outoforbitdev/action-semantic-release/commit/3fa0d9f9c29d57bb1d898d6aa3cebacf675009db))
+
 ## [1.3.2](https://github.com/outoforbitdev/action-semantic-release/compare/v1.3.1...v1.3.2) (2023-10-18)
 
 
