@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Semantic Release
-        uses: ./
+        uses: outoforbitdev/action-semantic-release@v1.3.2
         id: semanticrelease
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
@@ -61,7 +61,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Semantic Release
-        uses: ./
+        uses: outoforbitdev/action-semantic-release@v1.3.2
         id: semanticrelease
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
