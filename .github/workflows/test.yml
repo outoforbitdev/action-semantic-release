@@ -20,15 +20,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Test Release
-        uses: outoforbitdev/action-semantic-release@v1.3.3
-        id: semanticrelease
+      - name: Test Docker Image
+        uses: outoforbitdev/action-docker-test@v1.0.0-staging.1
+        id: dockertest
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          dry-run: true
-      - name: Version Summaries
-        env:
-          LAST_VERSION: ${{ steps.semanticrelease.outputs.last-version }}
-          NEXT_VERSION: ${{ steps.semanticrelease.outputs.next-version }}
-          VERSION_RELEASED: ${{ steps.semanticrelease.outputs.versionReleased}}
-        run: echo "### Version Summaries" >> $$GITHUB_STEP_SUMMARY; echo "* Last version - $LAST_VERSION" >> $$GITHUB_STEP_SUMMARY; echo "* Next version - $NEXT_VERSION" >> $$GITHUB_STEP_SUMMARY
+          test-command: "sh ./test.sh"
+      - name: Output
+        run: echo ${{steps.dockertest.outputs.success}}
