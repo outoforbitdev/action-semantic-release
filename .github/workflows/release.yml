@@ -1,5 +1,5 @@
 name: Release
-run-name: Releasing
+permissions: read-all
 on:
   push:
     branches:
@@ -8,11 +8,24 @@ on:
       - dev
       - staging
 jobs:
+  test-docker-image:
+    runs-on: ubuntu-latest
+    name: Test Docker Image
+    outputs:
+      success: ${{steps.dockertest.outputs.success}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Test Docker Image
+        uses: outoforbitdev/action-docker-test@v1.0.0-staging.1
+        id: dockertest
+        with:
+          test-command: "sh ./test.sh"
   semantic-release-dry:
     runs-on: ubuntu-latest
-    name: Dry Semantic Release
-    permissions:
-      contents: read
+    name: Check Release Version
+    needs: test-docker-image
+    if: ${{needs.test-docker-image.outputs.success}}
     outputs:
       versionReleased: ${{steps.semanticrelease.outputs.version-released}}
       version: ${{steps.semanticrelease.outputs.next-version}}
@@ -30,10 +43,8 @@ jobs:
   docker-publish:
     if:   ${{ needs.semantic-release-dry.outputs.versionReleased }}
     runs-on: ubuntu-latest
-    name: Docker Publish
+    name: Publish Docker Image
     needs: semantic-release-dry
-    permissions:
-      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -49,10 +60,8 @@ jobs:
         run: echo "Tag is ${{steps.dockerpublish.output.sha-tag}}"
   semantic-release:
     runs-on: ubuntu-latest
-    name: Semantic Release
+    name: Publish Release
     needs: docker-publish
-    permissions:
-      contents: write
     outputs:
       versionReleased: ${{steps.semanticrelease.outputs.version-released}}
       version: ${{steps.semanticrelease.outputs.next-version}}
