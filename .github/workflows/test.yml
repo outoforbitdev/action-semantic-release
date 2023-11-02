@@ -1,5 +1,5 @@
-name: Test
-run-name: Running Tests
+name: Test Docker Image
+permissions: read-all
 on:
   pull_request:
     types: 
@@ -11,10 +11,8 @@ on:
       - beta
       - dev
       - staging
-permissions:
-  contents: write
 jobs:
-  Test:
+  test-docker-image:
     runs-on: ubuntu-latest
     name: Run Tests
     steps:
