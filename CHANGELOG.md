@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/outoforbitdev/action-semantic-release/compare/v1.3.4...v1.3.5) (2023-11-02)
+
+
+### Bug Fixes
+
+* remove repositoryUrl ([#57](https://github.com/outoforbitdev/action-semantic-release/issues/57)) ([78477ad](https://github.com/outoforbitdev/action-semantic-release/commit/78477add3a0cec72aa3f9b29d5d41a5976452eef))
+
 ## [1.3.4](https://github.com/outoforbitdev/action-semantic-release/compare/v1.3.3...v1.3.4) (2023-11-02)
 
 
