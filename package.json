@@ -1,6 +1,5 @@
 {
     "name": "action-semantic-release",
-    "version": "1.3.3",
     "description": "",
     "devDependencies": {
         "semantic-release": "^22.0.5",
