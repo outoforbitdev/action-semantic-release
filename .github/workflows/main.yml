@@ -21,8 +21,6 @@ jobs:
         id: dockertest
         with:
           test-command: "sh ./test.sh"
-      - name: Output
-        run: echo ${{steps.dockertest.outputs.success}}
   semantic-release-dry:
     runs-on: ubuntu-latest
     name: Check Release Version
