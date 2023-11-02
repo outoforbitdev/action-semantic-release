@@ -8,10 +8,6 @@
         "@semantic-release/changelog": "^6.0.3 ",
         "@semantic-release/exec": "^6.0.3"
     },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/outoforbitdev/action-semantic-release.git"
-    },
     "bugs": {
       "url": "https://github.com/outoforbitdev/action-semantic-release/issues"
     },
