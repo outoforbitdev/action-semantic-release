@@ -1,4 +1,4 @@
-name: Test Docker Image
+name: Test Action
 permissions: read-all
 on:
   pull_request:
@@ -9,12 +9,12 @@ on:
     branches:
       - main
       - beta
-      - dev
+      - alpha
       - staging
 jobs:
   test-docker-image:
     runs-on: ubuntu-latest
-    name: Test Docker Image
+    name: Test Action
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,5 +23,10 @@ jobs:
         id: dockertest
         with:
           test-command: "sh ./test.sh"
-      - name: Output
-        run: echo ${{steps.dockertest.outputs.success}}
+      - name: Test Action
+        uses: ./
+        id: actiontest
+        with: 
+          github-token: ${{ secrets.RELEASE_TOKEN }}
+          dry-run: true
+          skip-changelog: true
