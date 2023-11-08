@@ -8,11 +8,15 @@ inputs:
   dry-run:
     description: "Whether to do a release dry-run"
     required: false
-    default: false
+    default: "false"
   skip-changelog:
     description: "Whether to skip writing to CHANGELOG.md on release"
     required: false
-    default: false
+    default: "false"
+  debug:
+    description: "Flag for debug logging."
+    required: false
+    default: "false"
 outputs:
   last-version:
     description: "The last released version"
@@ -27,3 +31,4 @@ runs:
     - ${{ inputs.github-token }}
     - ${{ inputs.dry-run }}
     - ${{ inputs.skip-changelog}}
+    - ${{ inputs.debug }}

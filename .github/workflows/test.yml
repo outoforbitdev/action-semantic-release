@@ -23,10 +23,18 @@ jobs:
         id: dockertest
         with:
           test-command: "sh ./test.sh"
-      - name: Test Action
+      - name: Test Action (No Changelog)
+        uses: ./
+        id: actiontestnochange
+        with: 
+          github-token: ${{ secrets.RELEASE_TOKEN }}
+          dry-run: true
+          skip-changelog: true
+          debug: true
+      - name: Test Action (With Changelog)
         uses: ./
         id: actiontest
         with: 
           github-token: ${{ secrets.RELEASE_TOKEN }}
           dry-run: true
-          skip-changelog: true
+          debug: true
