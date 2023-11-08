@@ -5,7 +5,7 @@ RUN apt-get update \
 
 COPY entrypoint.sh /entrypoint.sh
 
-COPY .releaserc /.releaserc
+COPY release.config.js /release.config.js
 
 COPY package.json /package.json
 
