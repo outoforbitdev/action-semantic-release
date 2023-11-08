@@ -29,6 +29,6 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.github-token }}
-    - ${{ inputs.dry-run }}
-    - ${{ inputs.skip-changelog}}
-    - ${{ inputs.debug }}
+    - ${{ inputs.dry-run == "true" }}
+    - ${{ inputs.skip-changelog == "true" }}
+    - ${{ inputs.debug == "true" }}
