@@ -19,5 +19,6 @@ git config --global --add safe.directory "${GITHUB_WORKSPACE:=.}"
 
 export GITHUB_TOKEN=$github_token
 export SKIP_CHANGELOG=$skip_changelog
+echo $SKIP_CONFIG
 
 npx semantic-release $dry_run_arg $debug_arg
