@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/outoforbitdev/action-semantic-release/compare/v1.4.0...v1.4.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update image tag ([#64](https://github.com/outoforbitdev/action-semantic-release/issues/64)) ([68a9045](https://github.com/outoforbitdev/action-semantic-release/commit/68a9045af7341babbecd9012287816437a719494))
+
 # [1.4.0](https://github.com/outoforbitdev/action-semantic-release/compare/v1.3.6...v1.4.0) (2023-11-09)
 
 
