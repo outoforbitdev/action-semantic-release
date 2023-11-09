@@ -5,6 +5,11 @@ dry_run=$2
 skip_changelog=$3
 debug=$4
 
+echo $github_token
+echo $dry_run
+echo $skip_changelog
+echo $debug
+
 dry_run_arg=""
 if $dry_run
 then dry_run_arg="--dryRun"
