@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/outoforbitdev/action-semantic-release/compare/v1.3.6...v1.4.0) (2023-11-09)
+
+
+### Features
+
+* support skipping the changelog ([#63](https://github.com/outoforbitdev/action-semantic-release/issues/63)) ([2d50197](https://github.com/outoforbitdev/action-semantic-release/commit/2d5019733c6a913249c9999e5d086b95372791a7))
+
 ## [1.3.6](https://github.com/outoforbitdev/action-semantic-release/compare/v1.3.5...v1.3.6) (2023-11-03)
 
 
