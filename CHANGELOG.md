@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/outoforbitdev/action-semantic-release/compare/v1.4.1...v1.4.2) (2023-11-09)
+
+
+### Bug Fixes
+
+* set git token env var ([#65](https://github.com/outoforbitdev/action-semantic-release/issues/65)) ([6ee7e21](https://github.com/outoforbitdev/action-semantic-release/commit/6ee7e214102f7d42b30651904dbfd769e45c30ce))
+
 ## [1.4.1](https://github.com/outoforbitdev/action-semantic-release/compare/v1.4.0...v1.4.1) (2023-11-09)
 
 
