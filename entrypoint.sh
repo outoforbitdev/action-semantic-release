@@ -22,4 +22,5 @@ fi
 
 git config --global --add safe.directory "${GITHUB_WORKSPACE:=.}"
 
-SKIP_CHANGELOG=$skip_changelog npx semantic-release $dry_run_arg $debug_arg
+export GITHUB_TOKEN=$github_token
+npx semantic-release $dry_run_arg $debug_arg
