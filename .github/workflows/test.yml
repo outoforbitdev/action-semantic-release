@@ -6,11 +6,6 @@ on:
       - opened
       - reopened
       - synchronize
-    branches:
-      - main
-      - beta
-      - alpha
-      - staging
 jobs:
   test-docker-image:
     runs-on: ubuntu-latest
