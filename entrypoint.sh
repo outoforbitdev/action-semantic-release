@@ -5,11 +5,6 @@ dry_run=$2
 skip_changelog=$3
 debug=$4
 
-echo $github_token
-echo $dry_run
-echo $skip_changelog
-echo $debug
-
 dry_run_arg=""
 if $dry_run
 then dry_run_arg="--dryRun"
@@ -24,6 +19,5 @@ git config --global --add safe.directory "${GITHUB_WORKSPACE:=.}"
 
 export GITHUB_TOKEN=$github_token
 export SKIP_CHANGELOG=$skip_changelog
-echo $SKIP_CHANGELOG
 
 npx semantic-release $dry_run_arg $debug_arg
