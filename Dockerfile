@@ -7,9 +7,9 @@ COPY package.json /package.json
 RUN npm install
 
 # ================================ Set Config =================================
-COPY release.config.js /release.config.js
+COPY configs/ /configs/
 
 # ============================== Set Entrypoint ===============================
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

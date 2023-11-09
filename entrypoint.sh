@@ -15,9 +15,11 @@ if $debug
 then debug_arg="--debug"
 fi
 
+if $skip_changelog
+then mv /configs/nochangelog/.releaserc .
+else mv /configs/withchangelog/.releaserc .
+fi
+
 git config --global --add safe.directory "${GITHUB_WORKSPACE:=.}"
 
-export GITHUB_TOKEN=$github_token
-export SKIP_CHANGELOG=$skip_changelog
-
-npx semantic-release $dry_run_arg $debug_arg
+SKIP_CHANGELOG=$skip_changelog npx semantic-release $dry_run_arg $debug_arg
