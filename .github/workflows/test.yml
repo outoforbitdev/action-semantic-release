@@ -1,4 +1,4 @@
-name: Test Docker Image
+name: Test Action
 permissions: read-all
 on:
   pull_request:
@@ -6,15 +6,10 @@ on:
       - opened
       - reopened
       - synchronize
-    branches:
-      - main
-      - beta
-      - dev
-      - staging
 jobs:
   test-docker-image:
     runs-on: ubuntu-latest
-    name: Test Docker Image
+    name: Test Action
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,5 +18,18 @@ jobs:
         id: dockertest
         with:
           test-command: "sh ./test.sh"
-      - name: Output
-        run: echo ${{steps.dockertest.outputs.success}}
+      - name: Test Action (No Changelog)
+        uses: outoforbitdev/action-semantic-release@v1.3.6
+        id: actiontestnochange
+        with: 
+          github-token: ${{ secrets.RELEASE_TOKEN }}
+          dry-run: true
+          skip-changelog: true
+          debug: true
+      - name: Test Action (With Changelog)
+        uses: outoforbitdev/action-semantic-release@v1.3.6
+        id: actiontest
+        with: 
+          github-token: ${{ secrets.RELEASE_TOKEN }}
+          dry-run: true
+          debug: true

@@ -1,16 +1,15 @@
 FROM outoforbitdev/node:2.0.1
 
+# =========================== Install Dependencies ============================
 RUN apt-get update \
     && apt-get install -y git
-
-COPY entrypoint.sh /entrypoint.sh
-
-COPY .releaserc /.releaserc
-
 COPY package.json /package.json
-
 RUN npm install
 
-RUN chmod +x /entrypoint.sh
+# ================================ Set Config =================================
+COPY configs/ /configs/
 
+# ============================== Set Entrypoint ===============================
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
