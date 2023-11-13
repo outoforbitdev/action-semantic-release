@@ -19,7 +19,7 @@ jobs:
         with:
           test-command: "sh ./test.sh"
       - name: Test Action (No Changelog)
-        uses: outoforbitdev/action-semantic-release@v1.3.6
+        uses: outoforbitdev/action-semantic-release@v1.4.2
         id: actiontestnochange
         with: 
           github-token: ${{ secrets.RELEASE_TOKEN }}
@@ -27,7 +27,7 @@ jobs:
           skip-changelog: true
           debug: true
       - name: Test Action (With Changelog)
-        uses: outoforbitdev/action-semantic-release@v1.3.6
+        uses: outoforbitdev/action-semantic-release@v1.4.2
         id: actiontest
         with: 
           github-token: ${{ secrets.RELEASE_TOKEN }}
