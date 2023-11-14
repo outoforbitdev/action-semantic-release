@@ -35,7 +35,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Semantic Release
-        uses: outoforbitdev/action-semantic-release@v1.3.6
+        uses: ./
         id: semanticrelease
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
@@ -71,10 +71,11 @@ jobs:
         with:
           persist-credentials: false
       - name: Semantic Release
-        uses: outoforbitdev/action-semantic-release@v1.3.6
+        uses: ./
         id: semanticrelease
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
+          skip-changelog: ${{ github.ref_name != 'main' }}
       - name: Version Summaries
         env:
           LAST_VERSION: ${{ steps.semanticrelease.outputs.last-version }}

@@ -22,5 +22,8 @@ fi
 
 git config --global --add safe.directory "${GITHUB_WORKSPACE:=.}"
 
+export VERSION_RELEASED=false
+
 export GITHUB_TOKEN=$github_token
-npx semantic-release $dry_run_arg $debug_arg
+npx semantic-release --no-ci $dry_run_arg $debug_arg
+
