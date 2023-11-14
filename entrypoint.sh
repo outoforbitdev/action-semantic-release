@@ -22,5 +22,11 @@ fi
 
 git config --global --add safe.directory "${GITHUB_WORKSPACE:=.}"
 
+export VERSION_RELEASED=false
+
 export GITHUB_TOKEN=$github_token
 npx semantic-release $dry_run_arg $debug_arg
+
+echo "last-version=$LAST_VERSION" >> $GITHUB_OUTPUT
+echo "last-version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+echo "last-version=$VERSION_RELEASED" >> $GITHUB_OUTPUT
