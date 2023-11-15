@@ -13,7 +13,7 @@ fi
 debug_arg=""
 branch_arg=""
 if $debug
-then debug_arg="--debug" && branch_arg="--branches $GITHUB_HEAD_REF"
+then debug_arg="--debug" && branch_arg="--branches $GITHUB_REF_NAME"
 fi
 
 if $skip_changelog
