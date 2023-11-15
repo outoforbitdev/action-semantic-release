@@ -1,7 +1,9 @@
 name: Dry Run
 permissions: read-all
 on:
-  push
+  push:
+    branches:
+      - jaymirecki/*
 jobs:
   release-action:
     runs-on: ubuntu-latest
