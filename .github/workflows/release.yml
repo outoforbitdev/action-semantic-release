@@ -10,25 +10,22 @@ on:
 jobs:
   test-docker-image:
     runs-on: ubuntu-latest
-    name: Test Docker Image
+    name: Test Action
     outputs:
-      success: ${{steps.dockertest.outputs.success}}
+      success: ${{steps.docker-test.outputs.success}}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Test Docker Image
         uses: outoforbitdev/action-docker-test@v1.0.0-staging.1
-        id: dockertest
+        id: docker-test
         with:
           test-command: "sh ./test.sh"
-  semantic-release-dry:
+  release-action:
     runs-on: ubuntu-latest
     name: Check Release Version
     needs: test-docker-image
-    if: ${{needs.test-docker-image.outputs.success}}
-    outputs:
-      versionReleased: ${{steps.semanticrelease.outputs.version-released}}
-      version: ${{steps.semanticrelease.outputs.next-version}}
+    if: ${{ needs.test-docker-image.outputs.success }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,50 +33,14 @@ jobs:
           persist-credentials: false
       - name: Semantic Release
         uses: ./
-        id: semanticrelease
-        with:
-          github-token: ${{ secrets.RELEASE_TOKEN }}
-          dry-run: true
-  docker-publish:
-    if:   ${{ needs.semantic-release-dry.outputs.versionReleased }}
-    runs-on: ubuntu-latest
-    name: Publish Docker Image
-    needs: semantic-release-dry
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Docker Publish
-        uses: outoforbitdev/action-docker-publish@v1.0.5
-        id: dockerpublish
-        with:
-          docker-username: ${{ secrets.DOCKER_USERNAME }}
-          docker-token: ${{ secrets.DOCKER_TOKEN }}
-          image-name: ${{ vars.IMAGE_NAME }}
-          image-tag: ${{ needs.semantic-release-dry.outputs.version }}
-      - name: Output Tags
-        run: echo "Tag is ${{steps.dockerpublish.output.sha-tag}}"
-  semantic-release:
-    runs-on: ubuntu-latest
-    name: Publish Release
-    needs: docker-publish
-    outputs:
-      versionReleased: ${{steps.semanticrelease.outputs.version-released}}
-      version: ${{steps.semanticrelease.outputs.next-version}}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Semantic Release
-        uses: ./
-        id: semanticrelease
+        id: semantic-release
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
           skip-changelog: ${{ github.ref_name != 'main' }}
-          dry-run: true
+          debug: true
       - name: Version Summaries
         env:
-          LAST_VERSION: ${{ steps.semanticrelease.outputs.last-version }}
-          NEXT_VERSION: ${{ steps.semanticrelease.outputs.next-version }}
-          VERSION_RELEASED: ${{ steps.semanticrelease.outputs.versionReleased}}
+          LAST_VERSION: ${{ steps.semantic-release.outputs.last-version }}
+          NEXT_VERSION: ${{ steps.semantic-release.outputs.next-version }}
+          VERSION_RELEASED: ${{ steps.semantic-release.outputs.version-released}}
         run: echo "### Version Summaries" >> $GITHUB_STEP_SUMMARY; echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY
