@@ -11,8 +11,9 @@ then dry_run_arg="--dryRun"
 fi
 
 debug_arg=""
+branch_arg=""
 if $debug
-then debug_arg="--debug"
+then debug_arg="--debug" && branch_arg="--branches $GITHUB_REF"
 fi
 
 if $skip_changelog
@@ -25,5 +26,5 @@ git config --global --add safe.directory "${GITHUB_WORKSPACE:=.}"
 export VERSION_RELEASED=false
 
 export GITHUB_TOKEN=$github_token
-npx semantic-release --no-ci $dry_run_arg $debug_arg
+npx semantic-release --no-ci $dry_run_arg $branch_arg $debug_arg
 
