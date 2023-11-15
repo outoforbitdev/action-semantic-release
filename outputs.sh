@@ -10,6 +10,6 @@ fi
 echo $LAST_VERSION
 echo "last-version=$LAST_VERSION" >> $GITHUB_OUTPUT
 echo $NEXT_VERSION
-echo "last-version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+echo "next-version=$NEXT_VERSION" >> $GITHUB_OUTPUT
 echo $VERSION_RELEASED
-echo "last-version=$VERSION_RELEASED" >> $GITHUB_OUTPUT
+echo "version-released=$VERSION_RELEASED" >> $GITHUB_OUTPUT
