@@ -2,7 +2,7 @@
 
 LAST_VERSION=$1
 NEXT_VERSION=$2
-if [[ "$LAST_VERSION" == "$NEXT_VERSION" ]]
+if [ "${LAST_VERSION}" == "${NEXT_VERSION}" ]
 then VERSION_RELEASED=false
 else VERSION_RELEASED=true
 fi
