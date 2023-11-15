@@ -23,7 +23,7 @@ jobs:
           test-command: "sh ./test.sh"
   release-action:
     runs-on: ubuntu-latest
-    name: Check Release Version
+    name: Publish Release
     needs: test-docker-image
     if: ${{ needs.test-docker-image.outputs.success }}
     steps:
@@ -31,16 +31,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Semantic Release
+      - name: Publish Release
         uses: ./
         id: semantic-release
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
           skip-changelog: ${{ github.ref_name != 'main' }}
           debug: true
-      - name: Version Summaries
+      - name: Summarize Versions
         env:
           LAST_VERSION: ${{ steps.semantic-release.outputs.last-version }}
           NEXT_VERSION: ${{ steps.semantic-release.outputs.next-version }}
           VERSION_RELEASED: ${{ steps.semantic-release.outputs.version-released}}
-        run: echo "### Version Summaries" >> $GITHUB_STEP_SUMMARY; echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY
+        run: echo "### Version Summaries" >> $GITHUB_STEP_SUMMARY; echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Version released - $VERSION_RELEASED" >> $GITHUB_STEP_SUMMARY
