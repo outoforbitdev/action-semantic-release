@@ -21,6 +21,7 @@ jobs:
             github-token: ${{ secrets.RELEASE_TOKEN }}
             skip-changelog: ${{ github.ref_name != 'main' }}
             dry-run: true
+            debug: true
         - name: Version Summaries
           env:
             LAST_VERSION: ${{ steps.semanticrelease.outputs.last-version }}

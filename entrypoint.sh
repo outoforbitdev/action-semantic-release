@@ -27,4 +27,3 @@ export VERSION_RELEASED=false
 
 export GITHUB_TOKEN=$github_token
 npx semantic-release --no-ci $dry_run_arg $branch_arg $debug_arg
-
