@@ -1,0 +1,27 @@
+name: Dry Run
+permissions: read-all
+on:
+  push
+jobs:
+  release-action:
+    runs-on: ubuntu-latest
+    name: Publish Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Publish Release
+        uses: ./
+        id: semantic-release
+        with:
+          github-token: ${{ secrets.RELEASE_TOKEN }}
+          skip-changelog: ${{ github.ref_name != 'main' }}
+          dry-run: true
+          debug: true
+      - name: Summarize Versions
+        env:
+          LAST_VERSION: ${{ steps.semantic-release.outputs.last-version }}
+          NEXT_VERSION: ${{ steps.semantic-release.outputs.next-version }}
+          VERSION_RELEASED: ${{ steps.semantic-release.outputs.version-released}}
+        run: echo "### Version Summaries" >> $GITHUB_STEP_SUMMARY; echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Version released - $VERSION_RELEASED" >> $GITHUB_STEP_SUMMARY

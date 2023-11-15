@@ -22,8 +22,7 @@
     '@semantic-release/release-notes-generator',
     ['@semantic-release/exec',
     {
-      "analyzeCommitsCmd": './outputs.sh ${lastRelease.version} ${lastRelease.version} false',
-      "verifyReleaseCmd": './outputs.sh ${lastRelease.version} ${nextRelease.version} true'
+      "verifyReleaseCmd": '/outputs.sh ${lastRelease.version} ${nextRelease.version}'
     }],
     '@semantic-release/github',
     '@semantic-release/changelog',

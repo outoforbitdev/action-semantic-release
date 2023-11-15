@@ -26,7 +26,7 @@ outputs:
     description: "Whether a version was released. Note that this would be true even with dry-run=true"
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://outoforbitdev/action-semantic-release:build--c8b6b54'
   args:
     - ${{ inputs.github-token }}
     - ${{ inputs.dry-run == 'true' }}
