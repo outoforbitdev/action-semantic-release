@@ -6,12 +6,12 @@ skip_changelog=$3
 debug=$4
 
 dry_run_arg=""
+branch_arg=""
 if $dry_run
 then dry_run_arg="--dryRun" && branch_arg="--branches $GITHUB_REF_NAME"
 fi
 
 debug_arg=""
-branch_arg=""
 if $debug
 then debug_arg="--debug"
 fi
