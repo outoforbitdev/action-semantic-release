@@ -12,4 +12,6 @@ COPY configs/ /configs/
 # ============================== Set Entrypoint ===============================
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+COPY outputs.sh /outputs.sh
+RUN chmod +x /outputs.sh
 ENTRYPOINT ["/entrypoint.sh"]
