@@ -42,5 +42,10 @@ jobs:
         env:
           LAST_VERSION: ${{ steps.semantic-release.outputs.last-version }}
           NEXT_VERSION: ${{ steps.semantic-release.outputs.next-version }}
-          VERSION_RELEASED: ${{ steps.semantic-release.outputs.version-released}}
-        run: echo "### Version Summaries" >> $GITHUB_STEP_SUMMARY; echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Version released - $VERSION_RELEASED" >> $GITHUB_STEP_SUMMARY
+          VERSION_RELEASED: >-
+            ${{ steps.semantic-release.outputs.version-released}}
+        run: >-
+          echo "### Version Summaries" >> $GITHUB_STEP_SUMMARY;
+          echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY;
+          echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY;
+          echo "* Version released - $VERSION_RELEASED" >> $GITHUB_STEP_SUMMARY
