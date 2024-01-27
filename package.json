@@ -1,19 +1,18 @@
 {
-    "name": "action-semantic-release",
-    "description": "",
-    "devDependencies": {
-        "semantic-release": "^22.0.5",
-        "@semantic-release/git": "^10.0.1",
-        "@semantic-release/changelog": "^6.0.3 ",
-        "@semantic-release/exec": "^6.0.3",
-        "@commitlint/cli": "^18.4.2",
-        "@commitlint/config-conventional": "^18.4.2",
-        "commitlint": "^18.4.2",
-        "husky": "^8.0.3"
-    },
-    "bugs": {
-      "url": "https://github.com/outoforbitdev/action-semantic-release/issues"
-    },
-    "homepage": "https://github.com/outoforbitdev/action-semantic-release#readme"
-  }
-  
+  "name": "action-semantic-release",
+  "description": "",
+  "devDependencies": {
+    "semantic-release": "^22.0.5",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/changelog": "^6.0.3 ",
+    "@semantic-release/exec": "^6.0.3",
+    "@commitlint/cli": "^18.4.2",
+    "@commitlint/config-conventional": "^18.4.2",
+    "commitlint": "^18.4.2",
+    "husky": "^8.0.3"
+  },
+  "bugs": {
+    "url": "https://github.com/outoforbitdev/action-semantic-release/issues"
+  },
+  "homepage": "https://github.com/outoforbitdev/action-semantic-release#readme"
+}

@@ -2,7 +2,7 @@ name: Test Action
 permissions: read-all
 on:
   pull_request:
-    types: 
+    types:
       - opened
       - reopened
       - synchronize
@@ -21,14 +21,14 @@ jobs:
       - name: Test Action (No Changelog)
         uses: ./
         id: action-test-no-change
-        with: 
+        with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
           skip-changelog: true
           debug: true
       - name: Test Action (With Changelog)
         uses: ./
         id: action-test
-        with: 
+        with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
           skip-changelog: false
           debug: true
@@ -37,7 +37,11 @@ jobs:
           LAST_VERSION: ${{ steps.action-test.outputs.last-version }}
           NEXT_VERSION: ${{ steps.action-test.outputs.next-version }}
           VERSION_RELEASED: ${{ steps.action-test.outputs.version-released}}
-        run: echo "### Version Summaries" >> $GITHUB_STEP_SUMMARY; echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY; echo "* Version released - $VERSION_RELEASED" >> $GITHUB_STEP_SUMMARY
+        run: >-
+          echo "### Version Summaries" >> $GITHUB_STEP_SUMMARY;
+          echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY;
+          echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY;
+          echo "* Version released - $VERSION_RELEASED" >> $GITHUB_STEP_SUMMARY
       - name: Publish Image
         uses: outoforbitdev/action-docker-publish@v2.0.0
         id: docker-publish
