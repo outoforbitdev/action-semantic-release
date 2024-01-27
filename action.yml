@@ -23,10 +23,12 @@ outputs:
   next-version:
     description: "The next released version"
   version-released:
-    description: "Whether a version was released. Note that this would be true even with dry-run=true"
+    description: >-
+      Whether a version was released.
+      Note that this would be true even with dry-run=true
 runs:
-  using: 'docker'
-  image: 'docker://outoforbitdev/action-semantic-release:build--ab8cea6'
+  using: "docker"
+  image: "docker://outoforbitdev/action-semantic-release:build--b146bcc"
   args:
     - ${{ inputs.github-token }}
     - ${{ inputs.dry-run == 'true' }}

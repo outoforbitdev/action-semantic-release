@@ -1,4 +1,5 @@
 # action-semantic-release
+
 <p align="center">
   <!-- <a href="https://github.com/outoforbitdev/action-semantic-release/discussions">
     <img alt="Join the community on GitHub Discussions" src="https://img.shields.io/badge/Join%20the%20community-on%20GitHub%20Discussions-blue">
@@ -26,16 +27,17 @@ GitHub Action for running [semantic-release](https://semantic-release.gitbook.io
 
 ### Inputs
 
-* `github-token`: Required. Your Github token to allow the action to make the release and commit the updated Changelog
-* `dry-run`: Optional. Whether this should be a dry run. Useful if you just want to get the potential next version.
+- `github-token`: Required. Your Github token to allow the action to make the release and commit the updated Changelog
+- `dry-run`: Optional. Whether this should be a dry run. Useful if you just want to get the potential next version.
 
 ### Outputs
 
-* `last-version`: The last released version.
-* `next-version`: The next version to be released. During a dry run this is the next version that _would_ be released, but was not because of the dry run. During a non-dry run this is the version that was just released by the action.
-* `version-released`: Whether a new version was released. Note that this can be true even during a dry run.
+- `last-version`: The last released version.
+- `next-version`: The next version to be released. During a dry run this is the next version that _would_ be released, but was not because of the dry run. During a non-dry run this is the version that was just released by the action.
+- `version-released`: Whether a new version was released. Note that this can be true even during a dry run.
 
 ### Example
+
 ```
 semantic-release:
     runs-on: ubuntu-latest
