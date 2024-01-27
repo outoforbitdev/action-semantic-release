@@ -43,7 +43,7 @@ jobs:
           echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY;
           echo "* Version released - $VERSION_RELEASED" >> $GITHUB_STEP_SUMMARY
       - name: Publish Image
-        uses: outoforbitdev/action-docker-publish@v2.0.0
+        uses: outoforbitdev/action-docker-publish@v3.0.0
         id: docker-publish
         with:
           docker-username: ${{ secrets.DOCKER_USERNAME }}
