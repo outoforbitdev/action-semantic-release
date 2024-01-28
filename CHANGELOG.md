@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/outoforbitdev/action-semantic-release/compare/v1.5.0...v1.6.0) (2024-01-28)
+
+
+### Features
+
+* bump semantic-release 23.0.0 ([44a9dc5](https://github.com/outoforbitdev/action-semantic-release/commit/44a9dc53091c872d0ff440535b6f7061d6cf20bb))
+
 # [1.5.0](https://github.com/outoforbitdev/action-semantic-release/compare/v1.4.2...v1.5.0) (2023-11-24)
 
 
