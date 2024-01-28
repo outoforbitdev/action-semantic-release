@@ -28,7 +28,7 @@ outputs:
       Note that this would be true even with dry-run=true
 runs:
   using: "docker"
-  image: "docker://outoforbitdev/action-semantic-release:build--b146bcc"
+  image: "docker://outoforbitdev/action-semantic-release:build--30c573b"
   args:
     - ${{ inputs.github-token }}
     - ${{ inputs.dry-run == 'true' }}
