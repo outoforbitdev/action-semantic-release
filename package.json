@@ -9,7 +9,7 @@
     "@commitlint/cli": "^18.4.2",
     "@commitlint/config-conventional": "^18.4.2",
     "commitlint": "^18.4.2",
-    "husky": "^8.0.3"
+    "husky": "^9.0.7"
   },
   "bugs": {
     "url": "https://github.com/outoforbitdev/action-semantic-release/issues"
