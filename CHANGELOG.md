@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/outoforbitdev/action-semantic-release/compare/v1.6.0...v1.6.1) (2024-02-16)
+
+
+### Bug Fixes
+
+* update dependencies ([5879c62](https://github.com/outoforbitdev/action-semantic-release/commit/5879c62fbb0827b99fc2fe333ffdfffcc96d2377))
+
 # [1.6.0](https://github.com/outoforbitdev/action-semantic-release/compare/v1.5.0...v1.6.0) (2024-01-28)
 
 
