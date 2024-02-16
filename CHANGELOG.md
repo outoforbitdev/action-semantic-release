@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/outoforbitdev/action-semantic-release/compare/v1.6.1...v1.6.2) (2024-02-16)
+
+
+### Bug Fixes
+
+* use image with resolved vulnerability ([aa6e5ba](https://github.com/outoforbitdev/action-semantic-release/commit/aa6e5bab8a80e4150d246fcf01fb3cfb2c7935e5))
+
 ## [1.6.1](https://github.com/outoforbitdev/action-semantic-release/compare/v1.6.0...v1.6.1) (2024-02-16)
 
 
