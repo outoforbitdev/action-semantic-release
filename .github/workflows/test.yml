@@ -45,7 +45,7 @@ jobs:
       - name: Publish Image
         uses: outoforbitdev/action-docker-publish@v3.0.0
         id: docker-publish
-        if: github.base_ref == 'staging'
+        if: github.base_ref == 'staging' || github.base_ref == 'main'
         with:
           docker-username: ${{ secrets.DOCKER_USERNAME }}
           docker-token: ${{ secrets.DOCKER_TOKEN }}
