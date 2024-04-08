@@ -9,7 +9,7 @@ on:
 jobs:
   test-docker-image:
     runs-on: ubuntu-latest
-    name: Test Action
+    name: Test Image
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,7 +45,7 @@ jobs:
 
   publish-docker-image:
     runs-on: ubuntu-latest
-    name: Test Action
+    name: Publish Image
     environment: manual_approval
     needs: test-docker-image
     steps:
