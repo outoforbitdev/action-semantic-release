@@ -10,6 +10,7 @@ jobs:
   test-docker-image:
     runs-on: ubuntu-latest
     name: Test Action
+    environment: manual_approval
     steps:
       - name: Checkout
         uses: actions/checkout@v4
