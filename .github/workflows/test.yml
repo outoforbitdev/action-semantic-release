@@ -10,7 +10,6 @@ jobs:
   test-docker-image:
     runs-on: ubuntu-latest
     name: Test Action
-    environment: manual_approval
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,6 +42,15 @@ jobs:
           echo "* Last version - $LAST_VERSION" >> $GITHUB_STEP_SUMMARY;
           echo "* Next version - $NEXT_VERSION" >> $GITHUB_STEP_SUMMARY;
           echo "* Version released - $VERSION_RELEASED" >> $GITHUB_STEP_SUMMARY
+
+  publish-docker-image:
+    runs-on: ubuntu-latest
+    name: Test Action
+    environment: manual_approval
+    needs: test-docker-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Publish Image
         uses: outoforbitdev/action-docker-publish@v3.0.0
         id: docker-publish
