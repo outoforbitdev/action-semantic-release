@@ -15,7 +15,7 @@ jobs:
       success: ${{steps.docker-test.outputs.success}}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Test Docker Image
         uses: outoforbitdev/action-docker-test@v1.0.0-staging.1
         id: docker-test
@@ -28,7 +28,7 @@ jobs:
     if: ${{ needs.test-docker-image.outputs.success }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Publish Release
